@@ -35,7 +35,7 @@ Add the dependency from jCenter to your app's (not project) `build.gradle` file.
 
 ```groovy
 dependencies {
-    implementation 'com.github.androidsoftcoders:AvatarImageView:1.0'
+    implementation 'com.github.indra58:AvatarImageview:Tag'
 }
 ```
 
