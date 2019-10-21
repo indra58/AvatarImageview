@@ -35,7 +35,7 @@ Add the dependency from jCenter to your app's (not project) `build.gradle` file.
 
 ```groovy
 dependencies {
-    implementation 'com.github.androidsoftcoders:AvatarImageView:1.2'
+    implementation 'com.github.androidsoftcoders:AvatarImageView:1.0'
 }
 ```
 
@@ -98,7 +98,7 @@ Then, in your activity:
 ```java
 AvatarImageView avatarImageView = findViewById(R.id.imageView);
 
-UserAvatar userAvatar = new UserAvatar("https://yourimageurl or file absolute path", "Avatar Name");
+UserAvatar userAvatar = new UserAvatar("https://yourimageurl or file absolute path or file itself", "Avatar Name");
 
 avatarImageView.setAvatar(userAvatar);
 ```
