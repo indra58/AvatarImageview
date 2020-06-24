@@ -2,6 +2,7 @@ package imageview.avatar.com.avatarimageview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
@@ -25,31 +26,37 @@ import com.bumptech.glide.request.target.Target;
 
 public class AvatarImageView extends FrameLayout {
 
-    private final int DEFAULT_IMAGE_SHAPE = 0;
-    private final int DEFAULT_IMAGE_RADIUS = 40;
-    private final int DEFAULT_IMAGE_MARGIN = 0;
-    private final float DEFAULT_TEXT_SIZE = 20f;
-    private final int DEFAULT_FONT_STYLE = -1;
+    private static final int DEFAULT_SHAPE = 0;
+    private static final int DEFAULT_RADIUS = 40;
+    private static final int DEFAULT_MARGIN = 0;
+    private static final int DEFAULT_TEXT_COLOR = Color.WHITE;
+    private static final float DEFAULT_TEXT_SIZE = 20f;
+    private static final int DEFAULT_FONT_STYLE = -1;
+    private static final int DEFAULT_STROKE_WIDTH = 0;
+    private static final int DEFAULT_STROKE_COLOR = Color.TRANSPARENT;
 
-    private final boolean DEFAULT_GRADIENT_ENABLED = false;
-    private final int DEFAULT_BG_COLOR = -1;
-    private final int DEFAULT_START_COLOR = -1;
-    private final int DEFAULT_CENTER_COLOR = -1;
-    private final int DEFAULT_END_COLOR = -1;
-    private final int DEFAULT_GRADIENT_ANGLE = 0;
+    private static final boolean DEFAULT_GRADIENT_ENABLED = false;
+    private static final int DEFAULT_BG_COLOR = -1;
+    private static final int DEFAULT_START_COLOR = -1;
+    private static final int DEFAULT_CENTER_COLOR = -1;
+    private static final int DEFAULT_END_COLOR = -1;
+    private static final int DEFAULT_GRADIENT_ANGLE = 0;
 
-    private int mImageShape = DEFAULT_IMAGE_SHAPE;
-    private int mImageRadius = DEFAULT_IMAGE_RADIUS;
-    private int mImageMargin = DEFAULT_IMAGE_MARGIN;
-    private float mTextSize = DEFAULT_TEXT_SIZE;
-    private int mFontStyle = DEFAULT_FONT_STYLE;
+    private int mShape;
+    private int mRadius;
+    private int mMargin;
+    private int mTextColor;
+    private float mTextSize;
+    private int mFontStyle;
+    private int mStrokeWidth;
+    private int mStrokeColor;
 
-    private boolean mGradientEnabled = DEFAULT_GRADIENT_ENABLED;
-    private int mBgColor = DEFAULT_BG_COLOR;
-    private int mStartColor = DEFAULT_START_COLOR;
-    private int mCenterColor = DEFAULT_CENTER_COLOR;
-    private int mEndColor = DEFAULT_END_COLOR;
-    private int mGradientAngle = DEFAULT_GRADIENT_ANGLE;
+    private boolean mGradientEnabled;
+    private int mBgColor;
+    private int mStartColor;
+    private int mCenterColor;
+    private int mEndColor;
+    private int mGradientAngle;
 
     private AppCompatImageView mAppCompatImageView;
     private AppCompatTextView mAppCompatTextView;
@@ -71,19 +78,22 @@ public class AvatarImageView extends FrameLayout {
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.AvatarImageView, defStyleAttr, 0);
 
-        mImageShape = typedArray.getInteger(R.styleable.AvatarImageView_image_shape, DEFAULT_IMAGE_SHAPE);
-        mImageMargin = typedArray.getInteger(R.styleable.AvatarImageView_image_margin, DEFAULT_IMAGE_MARGIN);
-        mImageRadius = typedArray.getInteger(R.styleable.AvatarImageView_image_radius, DEFAULT_IMAGE_RADIUS);
-        mTextSize = typedArray.getFloat(R.styleable.AvatarImageView_text_size, DEFAULT_TEXT_SIZE);
+        mShape = typedArray.getInteger(R.styleable.AvatarImageView_aiv_shape, DEFAULT_SHAPE);
+        mMargin = typedArray.getInteger(R.styleable.AvatarImageView_aiv_margin, DEFAULT_MARGIN);
+        mRadius = typedArray.getInteger(R.styleable.AvatarImageView_aiv_radius, DEFAULT_RADIUS);
+        mTextColor = typedArray.getResourceId(R.styleable.AvatarImageView_aiv_text_color, DEFAULT_TEXT_COLOR);
+        mTextSize = typedArray.getFloat(R.styleable.AvatarImageView_aiv_text_size, DEFAULT_TEXT_SIZE);
+        mStrokeWidth = typedArray.getInt(R.styleable.AvatarImageView_aiv_stroke_width, DEFAULT_STROKE_WIDTH);
+        mStrokeColor = typedArray.getResourceId(R.styleable.AvatarImageView_aiv_stroke_color, DEFAULT_STROKE_COLOR);
 
-        mFontStyle = typedArray.getResourceId(R.styleable.AvatarImageView_font_family, DEFAULT_FONT_STYLE);
+        mFontStyle = typedArray.getResourceId(R.styleable.AvatarImageView_aiv_font_family, DEFAULT_FONT_STYLE);
 
-        mGradientEnabled = typedArray.getBoolean(R.styleable.AvatarImageView_gradient_enabled, DEFAULT_GRADIENT_ENABLED);
-        mBgColor = typedArray.getResourceId(R.styleable.AvatarImageView_bg_color, DEFAULT_BG_COLOR);
-        mStartColor = typedArray.getResourceId(R.styleable.AvatarImageView_start_color, DEFAULT_START_COLOR);
-        mCenterColor = typedArray.getResourceId(R.styleable.AvatarImageView_center_color, DEFAULT_CENTER_COLOR);
-        mEndColor = typedArray.getResourceId(R.styleable.AvatarImageView_end_color, DEFAULT_END_COLOR);
-        mGradientAngle = typedArray.getInteger(R.styleable.AvatarImageView_gradient_angle, DEFAULT_GRADIENT_ANGLE);
+        mGradientEnabled = typedArray.getBoolean(R.styleable.AvatarImageView_aiv_gradient_enabled, DEFAULT_GRADIENT_ENABLED);
+        mBgColor = typedArray.getResourceId(R.styleable.AvatarImageView_aiv_bg_color, DEFAULT_BG_COLOR);
+        mStartColor = typedArray.getResourceId(R.styleable.AvatarImageView_aiv_start_color, DEFAULT_START_COLOR);
+        mCenterColor = typedArray.getResourceId(R.styleable.AvatarImageView_aiv_center_color, DEFAULT_CENTER_COLOR);
+        mEndColor = typedArray.getResourceId(R.styleable.AvatarImageView_aiv_end_color, DEFAULT_END_COLOR);
+        mGradientAngle = typedArray.getInteger(R.styleable.AvatarImageView_aiv_gradient_angle, DEFAULT_GRADIENT_ANGLE);
 
         typedArray.recycle();
 
@@ -97,13 +107,12 @@ public class AvatarImageView extends FrameLayout {
 
         mAppCompatTextView = new AppCompatTextView(mContext);
         mAppCompatTextView.setLayoutParams(params);
-        mAppCompatTextView.setTextColor(ContextCompat.getColor(mContext, android.R.color.white));
+        mAppCompatTextView.setTextColor(ContextCompat.getColor(mContext, mTextColor));
         mAppCompatTextView.setTextSize(mTextSize);
         mAppCompatTextView.setGravity(Gravity.CENTER);
         if (mFontStyle != DEFAULT_FONT_STYLE) {
             mAppCompatTextView.setTypeface(ResourcesCompat.getFont(mContext, mFontStyle));
         }
-
         GradientDrawable shortNameDrawable;
 
         if (mGradientEnabled) {
@@ -127,8 +136,14 @@ public class AvatarImageView extends FrameLayout {
                     ContextCompat.getColor(mContext, mBgColor) :
                     ColorUtils.getRandomColor());
         }
-
-        shortNameDrawable.setShape(GradientDrawable.OVAL);
+        //Curved
+        if (mShape == 2) {
+            shortNameDrawable.setShape(GradientDrawable.RECTANGLE);
+            shortNameDrawable.setCornerRadius(mRadius);
+            shortNameDrawable.setStroke(mStrokeWidth, ContextCompat.getColor(mContext, mStrokeColor));
+        } else {
+            shortNameDrawable.setShape(GradientDrawable.OVAL);
+        }
         shortNameDrawable.setSize(mAppCompatTextView.getWidth(), mAppCompatTextView.getHeight());
         mAppCompatTextView.setBackgroundDrawable(shortNameDrawable);
 
@@ -164,7 +179,7 @@ public class AvatarImageView extends FrameLayout {
 
         mUserAvatar = userAvatar;
 
-        switch (mImageShape) {
+        switch (mShape) {
             case 1:
                 setRoundImage();
                 break;
@@ -203,7 +218,7 @@ public class AvatarImageView extends FrameLayout {
                 .load(mUserAvatar.getImageFile() != null ? mUserAvatar.getImageFile() : mUserAvatar.getAvatarImageUrl())
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
-                .transform(new RoundedCornersTransformation(mContext, mImageRadius, mImageMargin))
+                .transform(new RoundedCornersTransformation(mContext, mRadius, mMargin))
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -258,7 +273,7 @@ public class AvatarImageView extends FrameLayout {
         mAppCompatTextView.setVisibility(VISIBLE);
     }
 
-    private void imageLoaded(){
+    private void imageLoaded() {
         showImageView();
         hideTextView();
     }
