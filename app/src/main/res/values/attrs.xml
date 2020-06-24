@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="AvatarImageView">
-        <attr name="image_radius" format="integer" />
-        <attr name="image_margin" format="integer" />
-        <attr name="image_shape" format="string">
+        <attr name="aiv_radius" format="integer" />
+        <attr name="aiv_margin" format="integer" />
+        <attr name="aiv_shape" format="string">
             <enum name="normal" value="0" />
             <enum name="round" value="1" />
             <enum name="curved" value="2" />
         </attr>
-        <attr name="text_size" format="float" />
-        <attr name="font_family" format="reference" />
-        <attr name="gradient_enabled" format="boolean" />
-        <attr name="bg_color" format="reference" />
-        <attr name="start_color" format="reference" />
-        <attr name="center_color" format="reference" />
-        <attr name="end_color" format="reference" />
-        <attr name="gradient_angle" format="string">
+        <attr name="aiv_text_color" format="reference" />
+        <attr name="aiv_text_size" format="float" />
+        <attr name="aiv_font_family" format="reference" />
+        <attr name="aiv_stroke_width" format="integer" />
+        <attr name="aiv_stroke_color" format="reference" />
+        <attr name="aiv_gradient_enabled" format="boolean" />
+        <attr name="aiv_bg_color" format="reference" />
+        <attr name="aiv_start_color" format="reference" />
+        <attr name="aiv_center_color" format="reference" />
+        <attr name="aiv_end_color" format="reference" />
+        <attr name="aiv_gradient_angle" format="string">
             <enum name="angle_0" value="0" />
             <enum name="angle_45" value="45" />
             <enum name="angle_90" value="90" />
