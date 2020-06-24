@@ -74,11 +74,11 @@ In your activity or fragment, insert `AvatarImageView` custom view.
 #### Additional properties to customize `AvatarImageView`
 
 ```text
-    1. app:image_radius="12" (integer)
-    2. app:image_margin="5" (integer)
-    3. app:image_shape="normal" or "round" or "curved" (String)
-    4. app:text_size="18" (float)
-    5. app:font_family="@font/your_font_name" (reference)
+    1. app:aiv_radius="12" (integer)
+    2. app:aiv_margin="5" (integer)
+    3. app:aiv_shape="normal" or "round" or "curved" (String)
+    4. app:aiv_text_size="18" (float)
+    5. app:aiv_font_family="@font/your_font_name" (reference)
 ```
 
 1. **Round Image**
@@ -90,7 +90,7 @@ In your activity or fragment, insert `AvatarImageView` custom view.
         android:id="@+id/imageView"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        app:image_shape="round" />
+        app:aiv_shape="round" />
 ```
 
 
@@ -112,8 +112,8 @@ avatarImageView.setAvatar(userAvatar);
         android:id="@+id/imageView"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        app:image_radius="20"
-        app:image_shape="curved" />
+        app:aiv_radius="20"
+        app:aiv_shape="curved" />
         
 ```
 
@@ -141,8 +141,8 @@ Additional properties supported:
         android:id="@+id/imageView"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        app:text_size="26"
-        app:font_family="@font/your_font_name" />
+        app:aiv_text_size="26"
+        app:aiv_font_family="@font/your_font_name" />
 ```
 
 
