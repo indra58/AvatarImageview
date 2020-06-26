@@ -29,11 +29,12 @@ public class AvatarImageView extends FrameLayout {
     private static final int DEFAULT_SHAPE = 0;
     private static final int DEFAULT_RADIUS = 40;
     private static final int DEFAULT_MARGIN = 0;
-    private static final int DEFAULT_TEXT_COLOR = Color.WHITE;
+    
+    private static final int DEFAULT_TEXT_COLOR = R.color.default_text_color;
     private static final float DEFAULT_TEXT_SIZE = 20f;
     private static final int DEFAULT_FONT_STYLE = -1;
     private static final int DEFAULT_STROKE_WIDTH = 0;
-    private static final int DEFAULT_STROKE_COLOR = Color.TRANSPARENT;
+    private static final int DEFAULT_STROKE_COLOR = R.color.default_stroke_color;
 
     private static final boolean DEFAULT_GRADIENT_ENABLED = false;
     private static final int DEFAULT_BG_COLOR = -1;
