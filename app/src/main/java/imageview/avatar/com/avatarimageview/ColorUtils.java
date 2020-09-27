@@ -19,7 +19,7 @@ public final class ColorUtils {
     public int getRandomColor() {
         SecureRandom secureRandom = new SecureRandom();
 
-        int[] androidColors = mContext.getResources().getIntArray(R.array.avatarcolors);
-        return androidColors[secureRandom.nextInt(androidColors.length)];
+        int[] avatarColors = mContext.getResources().getIntArray(R.array.avatarcolors);
+        return avatarColors[secureRandom.nextInt(avatarColors.length)];
     }
 }
