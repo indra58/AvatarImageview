@@ -9,6 +9,8 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
 
+import androidx.annotation.NonNull;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.engine.Resource;
@@ -268,7 +270,7 @@ public class RoundedCornersTransformation implements Transformation<Bitmap> {
 
 
     @Override
-    public void updateDiskCacheKey(MessageDigest messageDigest) {
+    public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
 
     }
 
