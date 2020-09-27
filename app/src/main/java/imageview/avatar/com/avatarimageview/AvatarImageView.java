@@ -2,7 +2,6 @@ package imageview.avatar.com.avatarimageview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
@@ -29,7 +28,7 @@ public class AvatarImageView extends FrameLayout {
     private static final int DEFAULT_SHAPE = 0;
     private static final int DEFAULT_RADIUS = 40;
     private static final int DEFAULT_MARGIN = 0;
-    
+
     private static final int DEFAULT_TEXT_COLOR = R.color.default_text_color;
     private static final float DEFAULT_TEXT_SIZE = 20f;
     private static final int DEFAULT_FONT_STYLE = -1;
@@ -119,23 +118,23 @@ public class AvatarImageView extends FrameLayout {
         if (mGradientEnabled) {
             if (mStartColor == DEFAULT_START_COLOR && mCenterColor == DEFAULT_CENTER_COLOR && mEndColor == DEFAULT_END_COLOR) {
                 shortNameDrawable = new GradientDrawable(getGradientOrientation(),
-                        new int[]{ColorUtils.getRandomColor(),
-                                ColorUtils.getRandomColor(),
-                                ColorUtils.getRandomColor()});
+                        new int[]{ColorUtils.getInstance(mContext).getRandomColor(),
+                                ColorUtils.getInstance(mContext).getRandomColor(),
+                                ColorUtils.getInstance(mContext).getRandomColor()});
             } else {
                 shortNameDrawable = new GradientDrawable(getGradientOrientation(),
                         new int[]{mStartColor != DEFAULT_START_COLOR ? ContextCompat.getColor(mContext, mStartColor) :
-                                ColorUtils.getRandomColor(),
+                                ColorUtils.getInstance(mContext).getRandomColor(),
                                 mCenterColor != DEFAULT_CENTER_COLOR ? ContextCompat.getColor(mContext, mCenterColor) :
-                                        ColorUtils.getRandomColor(),
+                                        ColorUtils.getInstance(mContext).getRandomColor(),
                                 mEndColor != DEFAULT_END_COLOR ? ContextCompat.getColor(mContext, mEndColor) :
-                                        ColorUtils.getRandomColor()});
+                                        ColorUtils.getInstance(mContext).getRandomColor()});
             }
         } else {
             shortNameDrawable = new GradientDrawable();
             shortNameDrawable.setColor(mBgColor != DEFAULT_BG_COLOR ?
                     ContextCompat.getColor(mContext, mBgColor) :
-                    ColorUtils.getRandomColor());
+                    ColorUtils.getInstance(mContext).getRandomColor());
         }
         //Curved
         if (mShape == 2) {

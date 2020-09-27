@@ -1,17 +1,25 @@
 package imageview.avatar.com.avatarimageview;
 
-import android.graphics.Color;
+import android.content.Context;
 
 import java.security.SecureRandom;
-import java.util.Random;
 
-public class ColorUtils {
+public final class ColorUtils {
 
-    public static int getRandomColor() {
+    private Context mContext;
+
+    private ColorUtils(Context context) {
+        mContext = context;
+    }
+
+    public static ColorUtils getInstance(Context context) {
+        return new ColorUtils(context);
+    }
+
+    public int getRandomColor() {
         SecureRandom secureRandom = new SecureRandom();
-        return Color.argb(secureRandom.nextInt(256),
-                secureRandom.nextInt(256),
-                secureRandom.nextInt(256),
-                secureRandom.nextInt(256));
+
+        int[] androidColors = mContext.getResources().getIntArray(R.array.avatarcolors);
+        return androidColors[secureRandom.nextInt(androidColors.length)];
     }
 }
