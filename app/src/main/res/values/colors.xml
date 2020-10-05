@@ -3,16 +3,16 @@
     <color name="default_text_color">@android:color/white</color>
     <color name="default_stroke_color">@android:color/transparent</color>
 
-    <item name="blue" type="color">#FF33B5E5</item>
-    <item name="purple" type="color">#FFAA66CC</item>
-    <item name="green" type="color">#FF99CC00</item>
-    <item name="orange" type="color">#FFFFBB33</item>
-    <item name="red" type="color">#FFFF4444</item>
-    <item name="darkblue" type="color">#FF0099CC</item>
-    <item name="darkpurple" type="color">#FF9933CC</item>
-    <item name="darkgreen" type="color">#FF669900</item>
-    <item name="darkorange" type="color">#FFFF8800</item>
-    <item name="darkred" type="color">#FFCC0000</item>
+    <item name="blue" type="color">#ABAEF7</item>
+    <item name="purple" type="color">#D789D7</item>
+    <item name="green" type="color">#9BD3CB</item>
+    <item name="orange" type="color">#F6A24E</item>
+    <item name="red" type="color">#F67280</item>
+    <item name="darkblue" type="color">#2D7F9D</item>
+    <item name="darkpurple" type="color">#D698E6</item>
+    <item name="darkgreen" type="color">#129A7D</item>
+    <item name="darkorange" type="color">#ED8E63</item>
+    <item name="darkred" type="color">#A01B49</item>
 
     <integer-array name="avatarcolors">
         <item>@color/blue</item>
