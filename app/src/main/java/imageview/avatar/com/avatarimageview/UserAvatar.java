@@ -2,7 +2,7 @@ package imageview.avatar.com.avatarimageview;
 
 import java.io.File;
 
-public class UserAvatar {
+public final class UserAvatar {
     private String avatarImageUrl;
     private File imageFile;
     private String avatarName;

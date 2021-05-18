@@ -41,26 +41,28 @@ public class AvatarImageView extends FrameLayout {
     private static final int DEFAULT_CENTER_COLOR = -1;
     private static final int DEFAULT_END_COLOR = -1;
     private static final int DEFAULT_GRADIENT_ANGLE = 0;
+    private static final boolean DEFAULT_FIRST_INITIAL_ONLY = false;
 
-    private int mShape;
-    private int mRadius;
-    private int mMargin;
-    private int mTextColor;
-    private float mTextSize;
-    private int mFontStyle;
-    private int mStrokeWidth;
-    private int mStrokeColor;
+    private final int mShape;
+    private final int mRadius;
+    private final int mMargin;
+    private final int mTextColor;
+    private final float mTextSize;
+    private final int mFontStyle;
+    private final int mStrokeWidth;
+    private final int mStrokeColor;
 
-    private boolean mGradientEnabled;
-    private int mBgColor;
-    private int mStartColor;
-    private int mCenterColor;
-    private int mEndColor;
-    private int mGradientAngle;
+    private final boolean mGradientEnabled;
+    private final int mBgColor;
+    private final int mStartColor;
+    private final int mCenterColor;
+    private final int mEndColor;
+    private final int mGradientAngle;
+    private final boolean mFirstInitialOnly;
 
     private AppCompatImageView mAppCompatImageView;
     private AppCompatTextView mAppCompatTextView;
-    private Context mContext;
+    private final Context mContext;
 
     private UserAvatar mUserAvatar;
 
@@ -94,6 +96,7 @@ public class AvatarImageView extends FrameLayout {
         mCenterColor = typedArray.getResourceId(R.styleable.AvatarImageView_aiv_center_color, DEFAULT_CENTER_COLOR);
         mEndColor = typedArray.getResourceId(R.styleable.AvatarImageView_aiv_end_color, DEFAULT_END_COLOR);
         mGradientAngle = typedArray.getInteger(R.styleable.AvatarImageView_aiv_gradient_angle, DEFAULT_GRADIENT_ANGLE);
+        mFirstInitialOnly = typedArray.getBoolean(R.styleable.AvatarImageView_aiv_first_initial_only, DEFAULT_FIRST_INITIAL_ONLY);
 
         typedArray.recycle();
 
@@ -282,6 +285,10 @@ public class AvatarImageView extends FrameLayout {
         hideImageView();
         showTextView();
 
-        mAppCompatTextView.setText(mUserAvatar.getAvatarName().isEmpty() ? "" : NameUtils.getShortName(mUserAvatar.getAvatarName()));
+        if(mFirstInitialOnly) {
+            mAppCompatTextView.setText(mUserAvatar.getAvatarName().isEmpty() ? "" : NameUtils.getFirstInitial(mUserAvatar.getAvatarName()));
+        } else {
+            mAppCompatTextView.setText(mUserAvatar.getAvatarName().isEmpty() ? "" : NameUtils.getShortName(mUserAvatar.getAvatarName()));
+        }
     }
 }

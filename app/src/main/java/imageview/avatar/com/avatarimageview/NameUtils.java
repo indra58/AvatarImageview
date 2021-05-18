@@ -1,6 +1,6 @@
 package imageview.avatar.com.avatarimageview;
 
-public class NameUtils {
+public final class NameUtils {
 
     public static String getShortName(String name) {
         try {
@@ -16,5 +16,9 @@ public class NameUtils {
             e.printStackTrace();
             return "";
         }
+    }
+
+    public static String getFirstInitial(String name) {
+        return name.substring(0, 1);
     }
 }

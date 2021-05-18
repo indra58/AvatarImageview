@@ -28,5 +28,6 @@
             <enum name="angle_270" value="270" />
             <enum name="angle_315" value="315" />
         </attr>
+        <attr name="aiv_first_initial_only" format="boolean" />
     </declare-styleable>
 </resources>

@@ -6,7 +6,7 @@ import java.security.SecureRandom;
 
 public final class ColorUtils {
 
-    private Context mContext;
+    private final Context mContext;
 
     private ColorUtils(Context context) {
         mContext = context;
