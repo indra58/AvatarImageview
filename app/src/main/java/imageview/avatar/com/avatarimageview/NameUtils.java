@@ -19,6 +19,6 @@ public final class NameUtils {
     }
 
     public static String getFirstInitial(String name) {
-        return name.substring(0, 1);
+        return name.substring(0, 1).toUpperCase();
     }
 }
