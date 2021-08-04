@@ -3,6 +3,9 @@ package imageview.avatar.com.avatarimageview;
 public final class NameUtils {
 
     public static String getShortName(String name) {
+        if(name.isEmpty()) {
+            return "";
+        }
         try {
             String[] splittedNames = name.split(" ");//no i18n
             String shortName;
@@ -19,6 +22,9 @@ public final class NameUtils {
     }
 
     public static String getFirstInitial(String name) {
+        if(name.isEmpty()) {
+            return "";
+        }
         return name.substring(0, 1).toUpperCase();
     }
 }
