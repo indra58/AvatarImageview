@@ -285,10 +285,14 @@ public class AvatarImageView extends FrameLayout {
         hideImageView();
         showTextView();
 
+        String avatarName = "";
+        if(mUserAvatar.getAvatarName() != null && !mUserAvatar.getAvatarName().isEmpty()) {
+            avatarName = mUserAvatar.getAvatarName();
+        }
         if(mFirstInitialOnly) {
-            mAppCompatTextView.setText(mUserAvatar.getAvatarName().isEmpty() ? "" : NameUtils.getFirstInitial(mUserAvatar.getAvatarName()));
+            mAppCompatTextView.setText(NameUtils.getFirstInitial(avatarName));
         } else {
-            mAppCompatTextView.setText(mUserAvatar.getAvatarName().isEmpty() ? "" : NameUtils.getShortName(mUserAvatar.getAvatarName()));
+            mAppCompatTextView.setText(NameUtils.getShortName(avatarName));
         }
     }
 }
